@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.sos.fso.cdoc.insc.entities;
+package com.sos.fso.cdoc.admin.entities;
 
 import java.io.Serializable;
 import java.util.List;

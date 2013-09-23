@@ -3,15 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.sos.fso.cdoc.insc.controllers;
+package com.sos.fso.cdoc.admin.controllers;
 
-import com.sos.fso.cdoc.insc.entities.Activation;
-import com.sos.fso.cdoc.insc.entities.Compte;
-import com.sos.fso.cdoc.insc.entities.Etudiant;
-import com.sos.fso.cdoc.insc.helpers.SendMail;
-import com.sos.fso.cdoc.insc.services.ActivationFacade;
-import com.sos.fso.cdoc.insc.services.CompteFacade;
-import com.sos.fso.cdoc.insc.services.EtudiantFacade;
+import com.sos.fso.cdoc.admin.entities.Activation;
+import com.sos.fso.cdoc.admin.entities.Compte;
+import com.sos.fso.cdoc.admin.entities.Etudiant;
+import com.sos.fso.cdoc.admin.helpers.SendMail;
+import com.sos.fso.cdoc.admin.services.ActivationFacade;
+import com.sos.fso.cdoc.admin.services.CompteFacade;
+import com.sos.fso.cdoc.admin.services.EtudiantFacade;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;

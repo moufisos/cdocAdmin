@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.sos.fso.cdoc.insc.services;
+package com.sos.fso.cdoc.admin.services;
 
-import com.sos.fso.cdoc.insc.entities.Compte;
+import com.sos.fso.cdoc.admin.entities.Compte;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

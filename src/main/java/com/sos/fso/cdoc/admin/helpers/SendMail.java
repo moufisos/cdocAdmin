@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.sos.fso.cdoc.insc.helpers;
+package com.sos.fso.cdoc.admin.helpers;
 
-import com.sos.fso.cdoc.insc.services.MailerBean;
+import com.sos.fso.cdoc.admin.services.MailerBean;
 import java.util.concurrent.Future;
 import java.util.logging.Logger;
 import javax.inject.Inject;

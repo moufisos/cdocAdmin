@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.sos.fso.cdoc.insc.services;
+package com.sos.fso.cdoc.admin.services;
 
-import com.sos.fso.cdoc.insc.entities.Sujet;
+import com.sos.fso.cdoc.admin.entities.Etudiant;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -15,7 +15,7 @@ import javax.persistence.PersistenceContext;
  * @author mab.salhi
  */
 @Stateless
-public class SujetFacade extends AbstractFacade<Sujet> {
+public class EtudiantFacade extends AbstractFacade<Etudiant> {
     @PersistenceContext(unitName = "cdocInscPU")
     private EntityManager em;
 
@@ -24,8 +24,8 @@ public class SujetFacade extends AbstractFacade<Sujet> {
         return em;
     }
 
-    public SujetFacade() {
-        super(Sujet.class);
+    public EtudiantFacade() {
+        super(Etudiant.class);
     }
     
 }
