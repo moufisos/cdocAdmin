@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <h1>Liste des sujet</h1>
+    </h:head>
+    <h:body>
+        <ui:composition template="../resources/template.xhtml">
+            <ui:define name="left">
+                
+            </ui:define>
+            <ui:define name="content">	
+                
+                <div class="span3 offset2">Liste des Etudiants</div>
+                <p:messages for="update"/>
+                <h:form>
+                <p:panelGrid columns="3">
+                <p:outputLabel value="Nom" />
+                <p:inputText id="nom" value="#{etudiantController.current.nom}"/>  
+                <p:message for="nom"/>
+                
+                <p:outputLabel value="Prenom" />
+                <p:inputText id="prenom" value="#{etudiantController.current.prenom}" />  
+                <p:message for="prenom"/>
+                
+                <p:outputLabel value="CNE :" />  
+                <p:inputText id="cne" value="#{etudiantController.current.cne}" />  
+                <p:message for="cne"/>  
+                
+                <p:outputLabel value="CIN" />  
+                <p:inputText id="cin" value="#{etudiantController.current.cin}" />  
+                <p:message for="cin"/>         
+                
+                <p:outputLabel value="Date de naissance"/> 
+                <h:panelGrid columns="4" cellpadding="5">  
+                    <p:calendar pattern="dd MMM yyyy" yearRange="c-100" locale="fr" showButtonPanel="true" navigator="true" id="daten" value="#{etudiantController.current.dateNaissance}"/>  
+                </h:panelGrid>  
+                <p:message for="daten"/>
+                
+                <p:outputLabel value="Adresse" />  
+                <p:inputText id="adresse" value="#{etudiantController.current.adresse}" />  
+                <p:message for="adresse"/>
+                
+                <p:outputLabel value="email" />  
+                <p:inputText id="email" value="#{etudiantController.current.email}" />  
+                <p:message for="email"/>    
+                
+                <p:outputLabel value="Nationalité" />  
+                <p:inputText id="nationalite" value="#{etudiantController.current.nationalite}" />  
+                <p:message for="nationalite"/>
+                
+                <p:outputLabel value="Sexe" />  
+                <p:selectOneRadio id="sexe" value="#{etudiantController.current.sexe}">  
+                    <f:selectItem itemLabel="Homme" itemValue="true" />  
+                    <f:selectItem itemLabel="Femme" itemValue="false" />  
+                </p:selectOneRadio>
+                <p:message for="sexe"/>
+                
+                <p:outputLabel value="Téléphone" />  
+                <p:inputText id="telephone" value="#{etudiantController.current.numTelephonne}" />  
+                <p:message for="telephone"/>
+                
+                <p:outputLabel value="Activité" />  
+                <p:selectOneRadio id="activite" value="#{etudiantController.current.activite}">  
+                    <f:selectItem itemLabel="Fonctionaire" itemValue="true" />  
+                    <f:selectItem itemLabel="Non Fonctionaire" itemValue="false" />  
+                </p:selectOneRadio>  
+                <h:message for="activite"/>
+                
+                <p:outputLabel value="Etat Matrimonial" />  
+                <p:selectOneRadio id="etatMatrimonial" value="#{etudiantController.current.etatMatrimonial}">  
+                    <f:selectItem itemLabel="Marié" itemValue="true" />  
+                    <f:selectItem itemLabel="Célibataire" itemValue="false" />  
+                </p:selectOneRadio>
+                <p:message for="etatMatrimonial"/>
+                
+                    
+                
+            </p:panelGrid>
+                  
+                    <h:commandButton value="modifier" action="#{etudiantController.doUpdate}"/>
+            </h:form>
+
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <h1>Liste des sujet</h1>
+    </h:head>
+    <h:body>
+        <ui:composition template="../resources/template.xhtml">
+            <ui:define name="left">
+                <h:form>
+                <p:commandLink value="Afficher la liste" action="#{sujetController.showList}"/><br />
+                </h:form>
+            </ui:define>
+            <ui:define name="content">	
+                
+                <div class="span3 offset2">Liste des Sujets</div>
+                <p:messages for="update"/>
+                <h:form>
+                <p:panelGrid columns="3">
+                    <p:outputLabel value="intitulé :" />
+                    <p:inputText id="intitule" value="#{sujetController.newSujet.intitule}"/>
+                    <p:message for="intitule" />
+                    
+                    <p:outputLabel value="description :" />
+                    <p:inputText id="description" value="#{sujetController.newSujet.description}"/>
+                    <p:message for="description" />
+                    
+                    <p:outputLabel value="nombre de places :" />
+                    <p:inputText id="nplace" value="#{sujetController.newSujet.nplace}"/>
+                    <p:message for="nplace" />
+                    
+                     <p:outputLabel value="branche"/>
+                     <h:selectOneMenu id="branche" value="#{sujetController.newSujet.brancheId}">
+                         <f:selectItems value="#{brancheController.all}" />
+                </h:selectOneMenu>
+                <p:outputLabel value=""/>
+                                
+                    
+                    <p:message for="branche"/>
+                </p:panelGrid>
+                <h:commandButton value="ajouter" action="#{sujetController.doCreate}"/>
+             </h:form>
+
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

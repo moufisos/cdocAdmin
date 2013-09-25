@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <h1>Liste des sujet</h1>
+    </h:head>
+    <h:body>
+        <ui:composition template="../resources/template.xhtml">
+            <ui:define name="left">
+                
+            </ui:define>
+            <ui:define name="content">	
+                
+                <div class="span3 offset2">Liste des Cadres</div>
+                <p:messages for="update"/>
+                <h:form>
+                <p:dataTable value="#{etudiantController.all}" var="etudiant"
+                             paginator="true" rows="5" sortMode="multiple"
+                                     >
+                    <p:column filterBy="#{etudiant.cne}" headerText="CNE">  
+                    <h:outputText value="#{etudiant.cne}" />  
+        </p:column>  
+                <p:column headerText="CIN">  
+                    <h:outputText value="#{etudiant.cin}" />  
+        </p:column>
+                    <p:column filterBy="#{etudiant.nom}"
+                              headerText="Nom" sortBy="#{etudiant.nom}">  
+                        <h:outputText value="#{etudiant.nom}" />  
+        </p:column>  
+                   <p:column headerText="Prénom">  
+                    <h:outputText value="#{etudiant.prenom}" />  
+        </p:column> 
+                             
+                <p:column headerText="email">  
+                    <h:outputText value="#{etudiant.email}" />  
+                </p:column>    
+                
+                <p:column headerText="fonctionnaire">  
+                    <h:outputText value="#{etudiant.activite}" />  
+                </p:column>
+                
+                <p:column style="width:4%">  
+                    <p:commandLink  value="modifier" action="#{etudiantController.showEdit(etudiant)}" />  
+                </p:column> 
+                    
+                <p:column>  
+                    <p:commandLink  value="détaille" action="#{etudiantController.showDetails(etudiant)}" />  
+                </p:column>
+                    
+                    <p:column>  
+                        <p:commandLink  value="supprimer" action="#{etudiantController.doRemove(etudiant)}" />  
+                </p:column> 
+            </p:dataTable>
+                    
+               
+             </h:form>
+
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
