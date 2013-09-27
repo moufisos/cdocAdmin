@@ -33,7 +33,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Sujet.findByIdSujet", query = "SELECT s FROM Sujet s WHERE s.idSujet = :idSujet"),
     @NamedQuery(name = "Sujet.findByOptimisticLock", query = "SELECT s FROM Sujet s WHERE s.optimisticLock = :optimisticLock"),
     @NamedQuery(name = "Sujet.findByIntitule", query = "SELECT s FROM Sujet s WHERE s.intitule = :intitule"),
-    @NamedQuery(name = "Sujet.findByNPlace", query = "SELECT s FROM Sujet s WHERE s.nombrePlace = :nombrePlace"),
+    @NamedQuery(name = "Sujet.findByNPlace", query = "SELECT s FROM Sujet s WHERE s.nPlace = :nPlace"),
     @NamedQuery(name = "Sujet.findByDescription", query = "SELECT s FROM Sujet s WHERE s.description = :description")})
 public class Sujet implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -50,19 +50,10 @@ public class Sujet implements Serializable {
     @Column(name = "intitule")
     private String intitule;
     @Column(name = "n_place")
-    private Integer nombrePlace;
+    private Integer nPlace;
     @Size(max = 255)
     @Column(name = "description")
     private String description;
-    @Size(min = 1, max = 150)
-    @Column(name = "encadrant")
-    private String encadrant;
-    @Size(min = 1, max = 255)
-    @Column(name = "labo")
-    private String labo;
-    @Size(min = 1, max = 255)
-    @Column(name = "etablissement")
-    private String etablissement;
     @JoinColumn(name = "branche", referencedColumnName = "id_branche")
     @ManyToOne
     private Branche branche;
@@ -111,41 +102,13 @@ public class Sujet implements Serializable {
         this.description = description;
     }
 
-    public Integer getNombrePlace() {
-        return nombrePlace;
+    public Integer getnPlace() {
+        return nPlace;
     }
 
-    public void setNombrePlace(Integer nombrePlace) {
-        this.nombrePlace = nombrePlace;
+    public void setnPlace(Integer nPlace) {
+        this.nPlace = nPlace;
     }
-
-    public String getEncadrant() {
-        return encadrant;
-    }
-
-    public void setEncadrant(String encadrant) {
-        this.encadrant = encadrant;
-    }
-
-    public String getLabo() {
-        return labo;
-    }
-
-    public void setLabo(String labo) {
-        this.labo = labo;
-    }
-
-    public String getEtablissement() {
-        return etablissement;
-    }
-
-    public void setEtablissement(String etablissement) {
-        this.etablissement = etablissement;
-    }
-
-    
-
-    
 
     public Branche getBranche() {
         return branche;

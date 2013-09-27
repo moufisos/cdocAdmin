@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
         <h1>Liste des sujet</h1>
@@ -38,10 +39,10 @@
                             <h:outputText value="#{sujet.encadrant}" />  
                         </p:column> 
                         <p:column headerText="Nombre de places">  
-                            <h:outputText value="#{sujet.nombrePlace}" />  
+                            <h:outputText value="#{sujet.nplace}" />  
                         </p:column>  
                          <p:column headerText="Branches">  
-                             <h:outputText value="#{sujet.branche.intitule}" />  
+                             <h:outputText value="#{sujet.brancheId.intitule}" />  
                         </p:column> 
                         <p:column style="width:4%">  
                             <p:commandButton id="selectButton" value="modifier" action="#{sujetController.showEdit(sujet)}" />  
