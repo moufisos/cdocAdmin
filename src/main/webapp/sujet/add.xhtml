@@ -2,8 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+          
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <h1>Liste des sujet</h1>
     </h:head>
@@ -20,7 +21,7 @@
                 <p:messages for="update"/>
                 <h:form>
                 <p:panelGrid columns="3">
-                    <p:outputLabel value="intitulé :" />
+                    <p:outputLabel value="intitule :" />
                     <p:inputText id="intitule" value="#{sujetController.newSujet.intitule}"/>
                     <p:message for="intitule" />
                     
@@ -41,17 +42,15 @@
                     <p:message for="description" />
                     
                     <p:outputLabel value="nombre de places :" />
-                    <p:inputText id="nplace" value="#{sujetController.newSujet.nplace}"/>
+                    <p:inputText id="nplace" value="#{sujetController.newSujet.nombrePlace}"/>
                     <p:message for="nplace" />
+                   
                     
-                     <p:outputLabel value="branche"/>
-                     <h:selectOneMenu id="branche" value="#{sujetController.newSujet.brancheId}">
-                         <f:selectItems value="#{brancheController.all}" />
-                </h:selectOneMenu>
-                <p:outputLabel value=""/>
-                                
-                    
-                    <p:message for="branche"/>
+                    <p:outputLabel value="Branche :" />
+                    <p:selectOneMenu id="branche" value="#{sujetController.newSujet.branche}">
+                        <f:selectItems value="#{brancheController.all}" />
+                    </p:selectOneMenu>
+                     
                 </p:panelGrid>
                 <h:commandButton value="ajouter" action="#{sujetController.doCreate}"/>
              </h:form>

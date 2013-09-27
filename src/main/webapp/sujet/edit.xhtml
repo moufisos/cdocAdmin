@@ -45,8 +45,14 @@ and open the template in the editor.
                     <p:message for="encadrant" />
                     
                     <p:outputLabel value="nombre de places :" />
-                    <p:inputText id="nplace" value="#{sujetController.current.nplace}"/>
+                    <p:inputText id="nplace" value="#{sujetController.current.nombrePlace}"/>
                     <p:message for="nplace" />
+                    
+                    <p:outputLabel value="Branche :" />
+                    <p:selectOneMenu id="branche" value="#{sujetController.current.branche}">
+                        <f:selectItems value="#{brancheController.all}" />
+                    </p:selectOneMenu>
+                    <p:message for="branche" />
                 </p:panelGrid>
                 <h:commandButton value="modifier" action="#{sujetController.doUpdate}"/>
             </h:form>
