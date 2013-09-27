@@ -130,7 +130,7 @@ public class Branche implements Serializable {
 
     @Override
     public String toString() {
-        return "com.sos.fso.cdoc.insc.entities.Branche[ idBranche=" + idBranche + " ]";
+        return ""+ intitule +"";
     }
     
 }

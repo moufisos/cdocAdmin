@@ -25,24 +25,15 @@ and open the template in the editor.
            <h:form>
                 <p:panelGrid columns="3">
                     <p:outputLabel value="intitulé :" />
-                    <p:inputText id="intitule" value="#{sujetController.current.intitule}"/>
+                    <p:inputText id="intitule" value="#{brancheController.current.intitule}"/>
                     <p:message for="intitule" />
                     
                     <p:outputLabel value="description :" />
-                    <p:inputText id="description" value="#{sujetController.current.description}"/>
+                    <p:inputText id="description" value="#{brancheController.current.description}"/>
                     <p:message for="description" />
-                    
-                    <p:outputLabel value="nombre de places :" />
-                    <p:inputText id="nplace" value="#{sujetController.current.nombrePlace}"/>
-                    <p:message for="nplace" />
-                    
-                    <p:outputLabel value="Branche :" />
-                    <p:selectOneMenu id="branche" value="#{sujetController.current.branche}">
-                        <f:selectItems value="#{brancheController.all}" />
-                    </p:selectOneMenu>
-                    <p:message for="branche" />
+                 
                 </p:panelGrid>
-                <h:commandButton value="modifier" action="#{sujetController.doUpdate}"/>
+               <h:commandButton value="modifier" action="#{brancheController.doUpdate}"/>
             </h:form>
             
             </ui:define>
