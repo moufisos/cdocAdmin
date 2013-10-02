@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
 
     <h:head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -25,6 +26,11 @@ padding-bottom: 40px;
 .sidebar-nav {
 padding: 9px 0;
 }
+h3{font-size: 12px}
+
+.ui-widget, .ui-widget .ui-widget {
+    font-size: 90% !important;
+ }
 </style>
 
 <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -57,7 +63,39 @@ padding: 9px 0;
         <div class="body-content">
             
                 <div id="left" class="col-lg-2">
-                <ui:insert name="left">Left</ui:insert>
+                <ui:insert name="left">
+                    
+                    <h:form>  
+              
+                                    <p:growl id="messages" autoUpdate="true"/>  
+
+                                    <p:panelMenu style="width:180px;">  
+                                        <p:submenu label="Doctorant">  
+                                            <p:menuitem value="Afficher" action="#{etudiantController.showList}"  icon="ui-icon-extlink" />  
+                                            
+                                        </p:submenu>  
+                                        <p:submenu label="Formation">  
+                                            <p:menuitem value="Afficher" action="#{brancheController.showList()}"  icon="ui-icon-disk" />  
+                                            <p:menuitem value="Ajouter" action="#{brancheController.showCreate}"  icon="ui-icon-arrowrefresh-1-w" />  
+                                            
+                                        </p:submenu>  
+                                        <p:submenu label="Sujet">  
+                                            <p:menuitem value="Afficher" action="#{sujetController.showList}"  icon="ui-icon-disk" />  
+                                            <p:menuitem value="Ajouter" action="#{sujetController.showCreate}"  icon="ui-icon-arrowrefresh-1-w" />  
+                                            
+                                        </p:submenu>  
+                                        <p:separator />  
+                                        <p:submenu label="Navigations" >  
+                                            
+                                                    <p:menuitem value="FSO" url="http://www.fso.ump.ma" icon="ui-icon-home" />  
+                                                    <p:menuitem value="Etude Doctoral" url="http://www.fso.ump.ma/recherche/etude-doctorale" icon="ui-icon-document" />  
+                                              
+                                        </p:submenu>  
+                                    </p:panelMenu>  
+
+                                </h:form>  
+
+                   </ui:insert>
             </div>
             <div id="content" class="col-lg-10">
                 <ui:insert name="content">Content</ui:insert>

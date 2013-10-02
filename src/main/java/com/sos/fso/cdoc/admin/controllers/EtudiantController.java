@@ -46,18 +46,18 @@ public class EtudiantController implements Serializable {
     // = Navigation Methods =
     // ======================================
     public String showDetails(Etudiant etudiant) {
-        return "view?faces-redirect=true";
+        return "/etudiant/view?faces-redirect=true";
     }
 
 
     
     public String showEdit(Etudiant item) {
         current = item;
-        return "edit?faces-redirect=true";
+        return "/etudiant/edit?faces-redirect=true";
     }
 
     public String showList() {
-        return "list?faces-redirect=true";
+        return "/etudiant/list?faces-redirect=true";
     }
     // ======================================
     // = Business Methods =

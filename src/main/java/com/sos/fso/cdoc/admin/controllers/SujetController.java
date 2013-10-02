@@ -62,15 +62,15 @@ public class SujetController implements Serializable{
     
     public String showCreate(){
         this.newSujet = new Sujet();
-    return "add?faces-redirect=true";
+    return "/sujet/add?faces-redirect=true";
     }
     
     public String showList() {
-        return "list?faces-redirect=true";
+        return "/sujet/list?faces-redirect=true";
     }
     public String showEdit(Sujet sujet){
     current=sujet;
-    return "edit?faces-redirect=true";
+    return "/sujet/edit?faces-redirect=true";
     }
     
     
@@ -85,6 +85,11 @@ public class SujetController implements Serializable{
         sujetService.edit(current);
     return showList();
     }
+    public String doRemove(Sujet sujet){
+        sujetService.remove(sujet);
+        return showList();
+    }
+    
     
     
     

@@ -9,11 +9,7 @@
     <h:body>
         
         <ui:composition template="../resources/template.xhtml">
-            <ui:define name="left">
-                <h:form>
-                <p:commandLink value="Ajouter un sujet" action="#{sujetController.showCreate}"/><br />
-                </h:form>
-            </ui:define>
+            
             <ui:define name="content">	
                 
                 <div class="span3 offset2">Liste des Cadres</div>
@@ -47,7 +43,16 @@
                              <h:outputText value="#{sujet.branche.intitule}" />  
                         </p:column> 
                         <p:column style="width:4%">  
-                            <p:commandButton id="selectButton" value="modifier" action="#{sujetController.showEdit(sujet)}" />  
+                               
+                                <p:growl id="messages"/>  
+
+                                <p:menuButton value="Options">  
+                                    <p:menuitem value="Editer" update="messages" action="#{sujetController.showEdit(sujet)}" icon="ui-icon-arrowrefresh-1-w"/>    
+                                    <p:menuitem value="Supprimer" icon="ui-icon-close" action="#{sujetController.doRemove(sujet)}" ajax="false"/>  
+                                    
+                                </p:menuButton>  
+                            
+                             
 
                         </p:column>  
                     </p:dataTable>

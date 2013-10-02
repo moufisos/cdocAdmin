@@ -54,19 +54,20 @@ public class BrancheController implements Serializable{
     
     //shows methods
     
+    
     public String showCreate(){
         this.newBranche=new Branche();
-        return "add?faces-redirect=true";
+        return "/branche/add.xhtml?faces-redirect=true";
          
     }
     
     public String showEdit(Branche branche){
         current = branche;
-        return "edit?faces-redirect=true";
+        return "/branche/edit?faces-redirect=true";
     }
     
     public String showList(){
-        return "list?faces-redirect=true";
+        return "/branche/list?faces-redirect=true";
     }
     
     //services methods
@@ -81,6 +82,11 @@ public class BrancheController implements Serializable{
     
     public String doUpdate(){
         brancheService.edit(current);
+        return showList();
+    }
+    
+    public String doRemove(Branche branche){
+        brancheService.remove(branche);
         return showList();
     }
     

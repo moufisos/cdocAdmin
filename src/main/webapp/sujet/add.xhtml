@@ -10,11 +10,7 @@
     </h:head>
     <h:body>
         <ui:composition template="../resources/template.xhtml">
-            <ui:define name="left">
-                <h:form>
-                <p:commandLink value="Afficher la liste" action="#{sujetController.showList}"/><br />
-                </h:form>
-            </ui:define>
+            
             <ui:define name="content">	
                 
                 <div class="span3 offset2">Liste des Sujets</div>
@@ -50,7 +46,8 @@
                     <p:selectOneMenu id="branche" value="#{sujetController.newSujet.branche}">
                         <f:selectItems value="#{brancheController.all}" />
                     </p:selectOneMenu>
-                     
+                    <p:message for="branche" />
+                    
                 </p:panelGrid>
                 <h:commandButton value="ajouter" action="#{sujetController.doCreate}"/>
              </h:form>
