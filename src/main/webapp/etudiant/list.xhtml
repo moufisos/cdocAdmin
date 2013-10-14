@@ -15,7 +15,7 @@
                 <div class="span3 offset2">Liste des Cadres</div>
                 <p:messages for="update"/>
                 <h:form>
-                <p:dataTable value="#{etudiantController.all}" var="etudiant"
+                    <p:dataTable id="tbl" value="#{etudiantController.all}" var="etudiant"
                              paginator="true" rows="5" sortMode="multiple"
                                      >
                     <p:column filterBy="#{etudiant.cne}" headerText="CNE">  
@@ -36,8 +36,9 @@
                     <h:outputText value="#{etudiant.email}" />  
                 </p:column>    
                 
-                <p:column headerText="fonctionnaire">  
-                    <h:outputText value="#{etudiant.activite}" />  
+                 
+                <p:column filterBy="#{etudiant.branche.intitule}" headerText="Branche" sortBy="#{etudiant.branche.intitule}">
+                    <h:outputText value="#{etudiant.branche.intitule}" />  
                 </p:column>
                 
                     <p:column style="width:4%">  
@@ -45,8 +46,8 @@
                                 <p:growl id="messages"/>  
 
                                 <p:menuButton value="Options">  
-                                    <p:menuitem value="Editer" update="messages" action="#{etudiantController.showEdit(etudiant)}" icon="ui-icon-arrowrefresh-1-w"/>    
-                                    <p:menuitem value="Supprimer" icon="ui-icon-close" action="#{etudiantController.doRemove(etudiant)}" ajax="false"/>  
+                                    <p:menuitem value="Détails" update="messages" action="#{etudiantController.showView(etudiant)}" />    
+                                    
                                     
                                 </p:menuButton>  
                             
@@ -55,7 +56,51 @@
                 
             </p:dataTable>
                     
-               
+               <h:panelGrid columns="2">  
+    <p:panel header="Export All Data">  
+        <h:commandLink>  
+            <p:graphicImage value="/cdocAdmin/javax.faces.resource/images/excel.png.xhtml" />  
+            <p:dataExporter type="xls" target="tbl" fileName="cars" />  
+        </h:commandLink>  
+  
+        <h:commandLink>  
+            <p:graphicImage value="/cdocAdmin/javax.faces.resource/images/pdf.png.xhtml" />  
+            <p:dataExporter type="pdf" target="tbl" fileName="cars"/>  
+        </h:commandLink>  
+          
+        <h:commandLink>  
+            <p:graphicImage value="/cdocAdmin/javax.faces.resource/images/csv.png.xhtml" />  
+            <p:dataExporter type="csv" target="tbl" fileName="cars" />  
+        </h:commandLink>  
+          
+        <h:commandLink>  
+            <p:graphicImage value="/cdocAdmin/javax.faces.resource/images/xml.png.xhtml" />  
+            <p:dataExporter type="xml" target="tbl" fileName="cars" />  
+        </h:commandLink>  
+    </p:panel>  
+      
+    <p:panel header="Export Page Data">  
+        <h:commandLink>  
+            <p:graphicImage value="/cdocAdmin/javax.faces.resource/images/excel.png.xhtml" />  
+            <p:dataExporter type="xls" target="tbl" fileName="cars" pageOnly="true"/>  
+        </h:commandLink>  
+  
+        <h:commandLink>  
+            <p:graphicImage value="/cdocAdmin/javax.faces.resource/images/pdf.png.xhtml" />  
+            <p:dataExporter type="pdf" target="tbl" fileName="cars" pageOnly="true"/>  
+        </h:commandLink>  
+          
+        <h:commandLink>  
+            <p:graphicImage value="/cdocAdmin/javax.faces.resource/images/csv.png.xhtml" />  
+            <p:dataExporter type="csv" target="tbl" fileName="cars" pageOnly="true"/>  
+        </h:commandLink>  
+          
+        <h:commandLink>  
+            <p:graphicImage value="/cdocAdmin/javax.faces.resource/images/xml.png.xhtml" />  
+            <p:dataExporter type="xml" target="tbl" fileName="cars" pageOnly="true"/>  
+        </h:commandLink>  
+    </p:panel>  
+</h:panelGrid>  
              </h:form>
 
             </ui:define>

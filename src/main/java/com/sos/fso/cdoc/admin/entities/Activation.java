@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.sos.fso.cdoc.admin.entities;
+package com.sos.fso.cdoc.insc.entities;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
@@ -13,11 +13,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -29,7 +28,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "t_activation")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Activation.findAll", query = "SELECT a FROM Activation a")})
+    @NamedQuery(name = "Activation.findAll", query = "SELECT a FROM Activation a"),
+    @NamedQuery(name = "Activation.findByIdActivation", query = "SELECT a FROM Activation a WHERE a.idActivation = :idActivation"),
+    @NamedQuery(name = "Activation.findByOptimisticLock", query = "SELECT a FROM Activation a WHERE a.optimisticLock = :optimisticLock"),
+    @NamedQuery(name = "Activation.findByActivationKey", query = "SELECT a FROM Activation a WHERE a.activationKey = :activationKey")})
 public class Activation implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -37,13 +39,13 @@ public class Activation implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_activation")
     private Integer idActivation;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 255)
+    @Column(name = "optimistic_lock")
+    private Integer optimisticLock;
+    @Size(max = 255)
     @Column(name = "activation_key")
     private String activationKey;
-    @JoinColumn(name = "id_compte", referencedColumnName = "id_compte")
-    @OneToOne
+    @JoinColumn(name = "compte", referencedColumnName = "id_compte")
+    @ManyToOne
     private Compte compte;
 
     public Activation() {
@@ -53,17 +55,20 @@ public class Activation implements Serializable {
         this.idActivation = idActivation;
     }
 
-    public Activation(Integer idActivation, String activationKey) {
-        this.idActivation = idActivation;
-        this.activationKey = activationKey;
-    }
-
     public Integer getIdActivation() {
         return idActivation;
     }
 
     public void setIdActivation(Integer idActivation) {
         this.idActivation = idActivation;
+    }
+
+    public Integer getOptimisticLock() {
+        return optimisticLock;
+    }
+
+    public void setOptimisticLock(Integer optimisticLock) {
+        this.optimisticLock = optimisticLock;
     }
 
     public String getActivationKey() {

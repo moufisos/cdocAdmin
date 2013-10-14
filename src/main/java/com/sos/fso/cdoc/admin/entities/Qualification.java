@@ -39,8 +39,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Qualification.findByDatePremiereInscription", query = "SELECT q FROM Qualification q WHERE q.datePremiereInscription = :datePremiereInscription"),
     @NamedQuery(name = "Qualification.findByDiplome", query = "SELECT q FROM Qualification q WHERE q.diplome = :diplome"),
     @NamedQuery(name = "Qualification.findByMention", query = "SELECT q FROM Qualification q WHERE q.mention = :mention"),
-    @NamedQuery(name = "Qualification.findByClassement", query = "SELECT q FROM Qualification q WHERE q.classement = :classement"),
     @NamedQuery(name = "Qualification.findByPartieDelivrante", query = "SELECT q FROM Qualification q WHERE q.partieDelivrante = :partieDelivrante"),
+    @NamedQuery(name = "Qualification.findByClassement", query = "SELECT q FROM Qualification q WHERE q.classement = :classement"),
     @NamedQuery(name = "Qualification.findByNote1", query = "SELECT q FROM Qualification q WHERE q.note1 = :note1"),
     @NamedQuery(name = "Qualification.findByNote2", query = "SELECT q FROM Qualification q WHERE q.note2 = :note2"),
     @NamedQuery(name = "Qualification.findByNote3", query = "SELECT q FROM Qualification q WHERE q.note3 = :note3"),
@@ -68,19 +68,21 @@ public class Qualification implements Serializable {
     private Date datePremiereInscription;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 150)
+    @Size(min = 1, max = 255)
     @Column(name = "diplome")
     private String diplome;
-    @Size(max = 45)
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 255)
     @Column(name = "mention")
     private String mention;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "classement")
-    private int classement;
-    @Size(max = 255)
+    @Size(min = 1, max = 255)
     @Column(name = "partie_delivrante")
     private String partieDelivrante;
+    @Column(name = "classement")
+    private Integer classement;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "note1")
     private Double note1;
@@ -105,12 +107,13 @@ public class Qualification implements Serializable {
         this.idQualification = idQualification;
     }
 
-    public Qualification(Integer idQualification, Date dateObtention, Date datePremiereInscription, String diplome, int classement) {
+    public Qualification(Integer idQualification, Date dateObtention, Date datePremiereInscription, String diplome, String mention, String partieDelivrante) {
         this.idQualification = idQualification;
         this.dateObtention = dateObtention;
         this.datePremiereInscription = datePremiereInscription;
         this.diplome = diplome;
-        this.classement = classement;
+        this.mention = mention;
+        this.partieDelivrante = partieDelivrante;
     }
 
     public Integer getIdQualification() {
@@ -161,20 +164,20 @@ public class Qualification implements Serializable {
         this.mention = mention;
     }
 
-    public int getClassement() {
-        return classement;
-    }
-
-    public void setClassement(int classement) {
-        this.classement = classement;
-    }
-
     public String getPartieDelivrante() {
         return partieDelivrante;
     }
 
     public void setPartieDelivrante(String partieDelivrante) {
         this.partieDelivrante = partieDelivrante;
+    }
+
+    public Integer getClassement() {
+        return classement;
+    }
+
+    public void setClassement(Integer classement) {
+        this.classement = classement;
     }
 
     public Double getNote1() {

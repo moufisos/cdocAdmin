@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>TODO supply a title</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            
+          <ui:composition template="../resources/template.xhtml">
+           
+            <ui:define name="content">	
+                
+                <div class="span3 offset2">Détails Candidat</div>
+                <p:messages for="update"/>
+               
+                    
+                    <p:panel header="Informations personnel">
+                        <p:panelGrid columns="2" >
+                        <h:outputText value="Nom :"/>
+                        <h:outputText id="nomEtudiant" value="#{etudiantController.current.nom}" style="font-weight: bold"/>
+                        
+                        <h:outputText value="Prenom :"/>
+                        <h:outputText id="prenomEtudiant" value="#{etudiantController.current.prenom}" style="font-weight: bold"/>
+                        
+                        <h:outputText value="CNE :"/>
+                        <h:outputText id="cneEtudiant" value="#{etudiantController.current.cne}" style="font-weight: bold"/>
+                        
+                        <h:outputText value="CIN :"/>
+                        <h:outputText id="cinEtudiant" value="#{etudiantController.current.cin}" style="font-weight: bold"/>
+                        
+                        <h:outputText value="Adresse :"/>
+                        <h:outputText id="addEtudiant" value="#{etudiantController.current.adresse}" style="font-weight: bold"/>
+                        
+                        <h:outputText value="Lieu de naissance :"/>
+                        <h:outputText id="lieuNEtudiant" value="#{etudiantController.current.lieuNaissance}" style="font-weight: bold"/>
+                        
+                        <h:outputText value="Téléphone :"/>
+                        <h:outputText id="telEtudiant" value="#{etudiantController.current.numeroTelephonne}" style="font-weight: bold"/>
+                        
+                        <h:outputText value="Nationalité :"/>
+                        <h:outputText id="nationaliteEtudiant" value="#{etudiantController.current.nationalite}" style="font-weight: bold"/>
+                        
+                        <h:outputText value="email :"/>
+                        <h:outputText id="emailEtudiant" value="#{etudiantController.current.email}" style="font-weight: bold"/>
+                        
+                        <h:outputText value="Activité :"/>
+                        <h:outputText id="activite" value="Fonctionnaire" rendered="#{etudiantController.current.activite}" style="font-weight: bold"/>
+                        <h:outputText id="activiteEtudiant" value="Sans Fonction" rendered="#{!etudiantController.current.activite}" style="font-weight: bold"/>
+                        
+                        <h:outputText value="Etat Matrimonial :"/>
+                        <h:outputText id="eta" value="Marié" rendered="#{etudiantController.current.etatMatrimonial}" style="font-weight: bold"/>
+                        <h:outputText id="etaEtudiant" value="Célibataire" rendered="#{!etudiantController.current.etatMatrimonial}" style="font-weight: bold"/>
+                        
+                        <h:outputText value="Sexe :"/>
+                        <h:outputText id="sexe" value="Homme" rendered="#{etudiantController.current.sexe}" style="font-weight: bold"/>
+                        <h:outputText id="sexeEtudiant" value="Femme" rendered="#{!etudiantController.current.sexe}" style="font-weight: bold"/>
+                        </p:panelGrid>
+                   </p:panel>
+               
+                <p:panel header="Diplôme obtenus">
+                    
+                    
+                </p:panel>
+                
+               
+    
+
+            </ui:define>
+        </ui:composition>  
+            
+        </h:form>
+        
+    </h:body>
+</html>

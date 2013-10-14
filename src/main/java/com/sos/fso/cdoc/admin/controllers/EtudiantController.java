@@ -5,12 +5,12 @@
  */
 package com.sos.fso.cdoc.admin.controllers;
 
-import com.sos.fso.cdoc.admin.entities.Activation;
-import com.sos.fso.cdoc.admin.entities.Compte;
-import com.sos.fso.cdoc.admin.entities.Etudiant;
+
+
 import com.sos.fso.cdoc.admin.services.ActivationFacade;
 import com.sos.fso.cdoc.admin.services.CompteFacade;
 import com.sos.fso.cdoc.admin.services.EtudiantFacade;
+import com.sos.fso.cdoc.admin.entities.Etudiant;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
@@ -35,25 +35,23 @@ public class EtudiantController implements Serializable {
     
     @Inject
     private CompteFacade compteService;
-    private Compte newCompte;
+   
     @Inject
     private ActivationFacade activationservice;
-    private Activation activation;
+   
     
     
     
     // ======================================
     // = Navigation Methods =
     // ======================================
-    public String showDetails(Etudiant etudiant) {
-        return "/etudiant/view?faces-redirect=true";
-    }
+    
 
 
     
-    public String showEdit(Etudiant item) {
+    public String showView(Etudiant item) {
         current = item;
-        return "/etudiant/edit?faces-redirect=true";
+        return "/etudiant/view?faces-redirect=true";
     }
 
     public String showList() {
@@ -94,12 +92,6 @@ public class EtudiantController implements Serializable {
     }
 
 
-    public Compte getNewCompte() {
-        return newCompte;
-    }
-
-    public void setNewCompte(Compte newCompte) {
-        this.newCompte = newCompte;
-    }
+   
     
 }

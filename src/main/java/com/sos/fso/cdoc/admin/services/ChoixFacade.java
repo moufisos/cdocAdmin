@@ -5,8 +5,10 @@
  */
 package com.sos.fso.cdoc.admin.services;
 
-import com.sos.fso.cdoc.admin.entities.Groupes;
+
+import com.sos.fso.cdoc.admin.entities.Choix;
 import javax.ejb.Stateless;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -15,7 +17,7 @@ import javax.persistence.PersistenceContext;
  * @author mab.salhi
  */
 @Stateless
-public class GroupesFacade extends AbstractFacade<Groupes> {
+public class ChoixFacade extends AbstractFacade<Choix> {
     @PersistenceContext(unitName = "cdocInscPU")
     private EntityManager em;
 
@@ -24,8 +26,8 @@ public class GroupesFacade extends AbstractFacade<Groupes> {
         return em;
     }
 
-    public GroupesFacade() {
-        super(Groupes.class);
+    public ChoixFacade() {
+        super(Choix.class);
     }
     
 }

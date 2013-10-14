@@ -5,6 +5,7 @@
  */
 package com.sos.fso.cdoc.admin.services;
 
+
 import com.sos.fso.cdoc.admin.entities.Qualification;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;

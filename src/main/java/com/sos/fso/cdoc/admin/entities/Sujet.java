@@ -6,7 +6,9 @@
 package com.sos.fso.cdoc.admin.entities;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,10 +18,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -33,8 +37,13 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Sujet.findByIdSujet", query = "SELECT s FROM Sujet s WHERE s.idSujet = :idSujet"),
     @NamedQuery(name = "Sujet.findByOptimisticLock", query = "SELECT s FROM Sujet s WHERE s.optimisticLock = :optimisticLock"),
     @NamedQuery(name = "Sujet.findByIntitule", query = "SELECT s FROM Sujet s WHERE s.intitule = :intitule"),
-    @NamedQuery(name = "Sujet.findByNPlace", query = "SELECT s FROM Sujet s WHERE s.nombrePlace = :nombrePlace"),
-    @NamedQuery(name = "Sujet.findByDescription", query = "SELECT s FROM Sujet s WHERE s.description = :description")})
+    @NamedQuery(name = "Sujet.findByEncadrant", query = "SELECT s FROM Sujet s WHERE s.encadrant = :encadrant"),
+    @NamedQuery(name = "Sujet.findByLabo", query = "SELECT s FROM Sujet s WHERE s.labo = :labo"),
+    @NamedQuery(name = "Sujet.findByEtablissement", query = "SELECT s FROM Sujet s WHERE s.etablissement = :etablissement"),
+    @NamedQuery(name = "Sujet.findByNbPlace", query = "SELECT s FROM Sujet s WHERE s.nbPlace = :nbPlace"),
+    @NamedQuery(name = "Sujet.findByDescription", query = "SELECT s FROM Sujet s WHERE s.description = :description"),
+    @NamedQuery(name = "Sujet.findByBranche", query = "SELECT s FROM Sujet s WHERE s.branche = :branche")
+})
 public class Sujet implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -46,26 +55,30 @@ public class Sujet implements Serializable {
     private Integer optimisticLock;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 75)
+    @Size(min = 1, max = 255)
     @Column(name = "intitule")
     private String intitule;
-    @Column(name = "n_place")
-    private Integer nombrePlace;
-    @Size(max = 255)
-    @Column(name = "description")
-    private String description;
+    @Basic(optional = false)
+    @NotNull
     @Size(min = 1, max = 150)
     @Column(name = "encadrant")
     private String encadrant;
-    @Size(min = 1, max = 255)
+    @Size(max = 255)
     @Column(name = "labo")
     private String labo;
-    @Size(min = 1, max = 255)
+    @Size(max = 255)
     @Column(name = "etablissement")
     private String etablissement;
+    @Column(name = "nb_place")
+    private Integer nbPlace;
+    @Size(max = 255)
+    @Column(name = "description")
+    private String description;
     @JoinColumn(name = "branche", referencedColumnName = "id_branche")
     @ManyToOne
     private Branche branche;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idSujet")
+    private List<Choix> choixList;
 
     public Sujet() {
     }
@@ -74,9 +87,10 @@ public class Sujet implements Serializable {
         this.idSujet = idSujet;
     }
 
-    public Sujet(Integer idSujet, String intitule) {
+    public Sujet(Integer idSujet, String intitule, String encadrant) {
         this.idSujet = idSujet;
         this.intitule = intitule;
+        this.encadrant = encadrant;
     }
 
     public Integer getIdSujet() {
@@ -103,22 +117,6 @@ public class Sujet implements Serializable {
         this.intitule = intitule;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Integer getNombrePlace() {
-        return nombrePlace;
-    }
-
-    public void setNombrePlace(Integer nombrePlace) {
-        this.nombrePlace = nombrePlace;
-    }
-
     public String getEncadrant() {
         return encadrant;
     }
@@ -143,9 +141,21 @@ public class Sujet implements Serializable {
         this.etablissement = etablissement;
     }
 
-    
+    public Integer getNbPlace() {
+        return nbPlace;
+    }
 
-    
+    public void setNbPlace(Integer nbPlace) {
+        this.nbPlace = nbPlace;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public Branche getBranche() {
         return branche;
@@ -155,7 +165,15 @@ public class Sujet implements Serializable {
         this.branche = branche;
     }
 
-    
+    @XmlTransient
+    public List<Choix> getChoixList() {
+        return choixList;
+    }
+
+    public void setChoixList(List<Choix> choixList) {
+        this.choixList = choixList;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;

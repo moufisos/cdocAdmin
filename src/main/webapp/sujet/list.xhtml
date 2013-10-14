@@ -37,7 +37,7 @@
                         </p:column>                       
                        
                         <p:column headerText="Nombre de places">  
-                            <h:outputText value="#{sujet.nombrePlace}" />  
+                            <h:outputText value="#{sujet.nbPlace}" />  
                         </p:column>  
                          <p:column headerText="Branches">  
                              <h:outputText value="#{sujet.branche.intitule}" />  
@@ -47,7 +47,7 @@
                                 <p:growl id="messages"/>  
 
                                 <p:menuButton value="Options">  
-                                    <p:menuitem value="Editer" update="messages" action="#{sujetController.showEdit(sujet)}" icon="ui-icon-arrowrefresh-1-w"/>    
+                                    <p:menuitem value="Editer" update="messages" action="#{sujetController.showEdit(sujet)}" icon="ui-icon-pencil"/>    
                                     <p:menuitem value="Supprimer" icon="ui-icon-close" action="#{sujetController.doRemove(sujet)}" ajax="false"/>  
                                     
                                 </p:menuButton>  
